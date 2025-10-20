@@ -1,125 +1,87 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import React from "react";
-import { motion } from "framer-motion";
-import Link from "next/link";
-import { BsArrowRight, BsLinkedin } from "react-icons/bs";
-import { HiDownload } from "react-icons/hi";
-import { FaGithubSquare, FaMedium } from "react-icons/fa";
-import { useSectionInView } from "@/lib/hooks";
-import { useActiveSectionContext } from "@/context/active-section-context";
+import Image from 'next/image';
+import React from 'react';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { BsLinkedin } from 'react-icons/bs';
+import { FaGithubSquare } from 'react-icons/fa';
 
-export default function Intro() {
-  const { ref } = useSectionInView("Home", 0.5);
-  const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
-
+const Intro = () => {
   return (
     <section
-      ref={ref}
-      id="home"
-      className="mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]"
+      id="inicio"
+      // 👇 CAMBIO: AÑADIMOS h-screen PARA QUE OCUPE TODA LA PANTALLA 👇
+      className="h-screen max-w-5xl mx-auto scroll-mt-28 flex flex-col justify-center"
     >
-      <div className="flex items-center justify-center">
-        <div className="relative">
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              type: "tween",
-              duration: 0.2,
-            }}
-          >
-            <Image
-              src="/pic1.jpg"
-              alt="Rahul portrait"
-              width="192"
-              height="192"
-              quality="95"
-              priority={true}
-              className="h-24 w-24 rounded-full object-cover border-[0.35rem] border-white shadow-xl"
-            />
-          </motion.div>
-
-          <motion.span
-            className="absolute bottom-0 right-0 text-4xl animate-bounce"
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              type: "spring",
-              stiffness: 125,
-              delay: 0.1,
-              duration: 0.7,
-            }}
-          >
-            👋
-          </motion.span>
-        </div>
-      </div>
-
-      <motion.h1
-        className="mb-10 mt-4 px-4 text-2xl font-medium !leading-[1.5] sm:text-4xl"
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-      >
-        <span className="font-bold">Hello, I&apos;m Rahul Kumar.</span> I'm a{" "}
-        <span className="font-bold">
-          Security Analyst
-        </span>{" "}
-        <span>and</span> <span className="font-bold">Penetration Tester</span>{" "}
-        with <span className="font-bold">2 years</span> of experience. I enjoy
-        doing <span className="italic">CTF challenges</span>. My focus is{" "}
-        <span className="underline">Web Application Security</span>.
-      </motion.h1>
-
-      <motion.div
-        className="flex flex-col sm:flex-row items-center justify-center gap-2 px-4 text-lg font-medium"
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 0.1,
-        }}
-      >
-        <Link
-          href="#contact"
-          className="group bg-gray-900 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 transition"
-          onClick={() => {
-            setActiveSection("Contact");
-            setTimeOfLastClick(Date.now());
-          }}
-        >
-          Contact Me Here{" "}
-          <BsArrowRight className="opacity-70 group-hover:translate-x-1 transition" />
-        </Link>
-
-        <a
-          className="group bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10"
-          href="/CV.pdf"
-          download
-        >
-          Download CV{" "}
-          <HiDownload className="opacity-60 group-hover:translate-y-1 transition" />
-        </a>
-
-        <a
-          className="bg-white p-4 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
-          href="https://www.linkedin.com/in/rahul-kumar-gmu/"
-          target="_blank"
-        >
-          <BsLinkedin />
-        </a>
-
+      <div className="flex flex-col lg:flex-row items-center justify-center gap-10">
         
-
-
-        <a
-          className="bg-white p-4 text-gray-700 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
-          href="https://github.com/rahulkumarmmmut"
-          target="_blank"
+        {/* --- FOTO --- */}
+        <motion.div
+          className="relative"
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
         >
-          <FaGithubSquare />
-        </a>
-      </motion.div>
+          <Image
+            src="/FotoAVS.png"
+            alt="Alex Villegas portrait"
+            width={300}
+            height={300}
+            quality="95"
+            priority={true}
+            className="h-72 w-72 rounded-full object-cover shadow-xl"
+          />
+        </motion.div>
+
+        {/* --- TEXTO Y BOTONES --- */}
+        <motion.div
+          className="flex flex-col items-center lg:items-start gap-4"
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+        >
+          <div className="text-center lg:text-left">
+            <h1 className="text-6xl font-bold text-white">Alex Villegas</h1>
+            <p className="text-4xl font-bold text-gray-400/70 mt-2">Cybersecurity Student</p>
+          </div>
+          
+          <div className="grid grid-cols-[1fr_auto] grid-rows-2 gap-x-4 gap-y-4 w-full max-w-sm">
+            <a
+              href="/CV_AVS.pdf"
+              download
+              className="bg-gray-900 font-semibold text-white px-8 py-5 flex items-center justify-center rounded-full outline-none focus:scale-105 hover:scale-105 hover:bg-gray-950 active:scale-100 transition shadow-md"
+            >
+              Download CV
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/alexvillegassalguero/"
+              target="_blank"
+              aria-label="LinkedIn"
+              className="bg-white/10 text-white p-5 flex items-center justify-center rounded-full aspect-square focus:scale-110 hover:scale-110 active:scale-105 transition shadow-md"
+            >
+              <BsLinkedin size={28} />
+            </a>
+            
+            <Link
+              href="#contact"
+              className="bg-white/10 font-semibold text-white px-8 py-5 flex items-center justify-center rounded-full outline-none focus:scale-105 hover:scale-105 hover:bg-white/20 active:scale-100 transition shadow-md"
+            >
+              Contact Me
+            </Link>
+
+            <a
+              href="https://github.com/villi21"
+              target="_blank"
+              aria-label="GitHub"
+              className="bg-white/10 text-white p-5 flex items-center justify-center rounded-full aspect-square focus:scale-110 hover:scale-110 active:scale-105 transition shadow-md"
+            >
+              <FaGithubSquare size={28} />
+            </a>
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
-}
+};
+
+export default Intro;

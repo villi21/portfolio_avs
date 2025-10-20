@@ -1,15 +1,31 @@
 import React from "react";
-import { FaHeart } from "react-icons/fa";
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="mb-10 px-4 text-center text-gray-500">
-      <small className="mb-2 block text-xs">&copy; 2024 Rahul.</small>
-      <p className="text-xs items-center justify-center flex">
-        <span className="font-semibold">About This Website:</span> Built With{" "}
-        <span className="ml-1 ">
-          <FaHeart className="fill-red-500 w-5 h-5 animate-ping " />
-        </span>
+      <small className="mb-2 block text-xs">
+        &copy; {currentYear} Alex Villegas. Todos los derechos reservados.
+      </small>
+      <p className="text-xs">
+        Este sitio está protegido por reCAPTCHA y se aplican la&nbsp;
+        <a 
+          href="https://policies.google.com/privacy" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="underline"
+        >
+          Política de Privacidad
+        </a> y los&nbsp;
+        <a 
+          href="https://policies.google.com/terms" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="underline"
+        >
+          Términos de Servicio
+        </a> de Google.
       </p>
     </footer>
   );

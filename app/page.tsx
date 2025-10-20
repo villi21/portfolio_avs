@@ -6,7 +6,6 @@ import Experience from "@/components/experience";
 import Intro from "@/components/intro";
 import Projects from "@/components/projects";
 import SectionDivider from "@/components/section-divider";
-import Skills from "@/components/skills";
 import AnimatedCursor from "react-animated-cursor";
 
 export default function Home() {
@@ -32,7 +31,6 @@ export default function Home() {
       <Projects />
       <Education />
       <Certificates />
-      <Skills />
       <Contact />
     </main>
   );

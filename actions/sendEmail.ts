@@ -5,78 +5,69 @@ import { Resend } from "resend";
 import { validateString, getErrorMessage } from "@/lib/utils";
 import ContactFormEmail from "@/email/contact-form-email";
 
-// Create Resend instance for sending emails
 const resend = new Resend(process.env.RESEND_API_KEY);
+const recaptchaSecretKey = process.env.RECAPTCHA_SECRET_KEY;
 
 export const sendEmail = async (formData: FormData) => {
-  // 1) Extract form fields + token
+  console.log("--- New email submission received ---");
+
   const senderEmail = formData.get("senderEmail");
   const message = formData.get("message");
-  const token = formData.get("token"); // reCAPTCHA token from client
+  const token = formData.get("token");
 
-  // 2) Simple server-side validation for inputs
+  // --- 1. Validación de Entradas ---
   if (!validateString(senderEmail, 500)) {
     return { error: "Invalid sender email" };
   }
   if (!validateString(message, 5000)) {
     return { error: "Invalid message" };
   }
-
-  // 3) Verify reCAPTCHA token (Step 3)
-  if (!token) {
-    return { error: "Missing reCAPTCHA token" };
+  
+  // --- 2. Verificación de reCAPTCHA ---
+  console.log("Verifying reCAPTCHA...");
+  if (!recaptchaSecretKey || !token) {
+    console.error("reCAPTCHA secret key or token is missing.");
+    return { error: "reCAPTCHA configuration error." };
   }
 
-  const secretKey = process.env.RECAPTCHA_SECRET_KEY; // from .env
-  const verifyUrl = "https://www.google.com/recaptcha/api/siteverify";
-
-  // Build POST body
-  const params = new URLSearchParams();
-  params.append("secret", secretKey || "");
-  params.append("response", token.toString());
-
   try {
-    const googleRes = await fetch(verifyUrl, {
+    const recaptchaRes = await fetch("https://www.google.com/recaptcha/api/siteverify", {
       method: "POST",
-      body: params,
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `secret=${recaptchaSecretKey}&response=${token}`,
     });
-    const googleData = await googleRes.json();
+    const recaptchaData = await recaptchaRes.json();
 
-    // Check if verification or score failed
-    if (!googleData.success || googleData.score < 0.5) {
-      return {
-        error:
-          "reCAPTCHA verification failed or score too low. Possible bot activity.",
-      };
+    if (!recaptchaData.success || recaptchaData.score < 0.5) {
+      console.warn("reCAPTCHA verification failed:", recaptchaData);
+      return { error: "reCAPTCHA verification failed. Possible bot activity." };
     }
-  } catch (error: unknown) {
-    // If Google’s verify endpoint couldn’t be reached or some other fetch error
-    return {
-      error: "Failed to verify reCAPTCHA. Please try again.",
-    };
+    
+    console.log("reCAPTCHA verification successful! Score:", recaptchaData.score);
+  } catch (error) {
+    console.error("Error connecting to reCAPTCHA verification service:", error);
+    return { error: "Could not verify reCAPTCHA. Please try again." };
   }
 
-  // 4) If reCAPTCHA passed, proceed to send the email
-  let data;
+  // --- 3. Envío del Email con Resend ---
+  console.log("Proceeding to send email with Resend...");
   try {
-    data = await resend.emails.send({
+    const data = await resend.emails.send({
       from: "Contact Form <onboarding@resend.dev>",
-      to: "irahulk2903@gmail.com", // your receiving address
-      subject: "Message from contact form",
-      reply_to: senderEmail?.toString(),
+      to: "alexvillegassalguero@gmail.com", // Tu email de cuenta de Resend
+      subject: "Message from your Portfolio",
+      reply_to: senderEmail.toString(),
       react: React.createElement(ContactFormEmail, {
-        message: message,
-        senderEmail: senderEmail,
+        message: message.toString(),
+        senderEmail: senderEmail.toString(),
       }),
     });
-  } catch (error: unknown) {
-    return {
-      error: getErrorMessage(error),
-    };
-  }
 
-  // 5) Return success
-  return {
-    data,
-  };
+    console.log("Email sent successfully with Resend:", data);
+    return { data }; // Devuelve éxito
+
+  } catch (error: unknown) {
+    console.error("Error sending email with Resend:", error);
+    return { error: getErrorMessage(error) };
+  }
 };

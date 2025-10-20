@@ -38,10 +38,6 @@ export const links = [
     name: "Certificates",
     hash: "#certificates",
   },
-  {
-    name: "Skills",
-    hash: "#skills",
-  },
 
   {
     name: "Contact",
@@ -139,7 +135,7 @@ export const projectsData = [
     tags: ["Python", "Socket", "Subprocess"],
     imageUrl:srs,
     gitLink: [
-      "https://github.com/rahulkumarmmmut/SecurityReconSuite",
+      "",
     ],
   },
   {
@@ -149,7 +145,7 @@ export const projectsData = [
     tags: ["Java", "JSP", "Android Development", "Oracle", "SQL"],
     imageUrl:android,
     gitLink: [
-      "https://github.com/rahulkumarmmmut/Android-Application--Music-Store",
+      "",
     ],
   },
   {
@@ -158,7 +154,7 @@ export const projectsData = [
       "MyPass is a python application used for storing website login information, offering password generation and search functionality.",
     tags: ["Python", "JSON", "Tkinter"],
     imageUrl: mypass,
-    gitLink: ["https://github.com/rahulkumarmmmut/PasswordManager"],
+    gitLink: [""],
   },
   {
     title: "Word Analytics",
@@ -166,7 +162,7 @@ export const projectsData = [
       "An Android application that assists color-blind individuals to be able to identify colors they are not able to see.",
     tags: ["Kotlin", "Retrofit", "Android Application"],
     imageUrl: colordetector,
-    gitLink: ["https://github.com/rahulkumarmmmut/colordetection"],
+    gitLink: [""],
   },
 ] as const;
 

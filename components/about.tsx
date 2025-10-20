@@ -19,35 +19,11 @@ export default function About() {
     >
      <SectionHeading>About me</SectionHeading>
     <p className="mb-3">
-      <span className="font-medium">Rahul Kumar</span> is a cybersecurity
-      professional specializing in <span className="font-bold">Web Application Security</span>, 
-      <span className="font-bold">Network Security</span>, and <span className="font-bold">Penetration Testing</span>. 
-      He recently completed his master's degree from <span className="font-bold">George Mason University</span>, 
-      Virginia, USA, in <span className="font-bold">Cybersecurity Engineering</span>, a program ranked in the nation's top 10. 
-      Rahul holds a profound interest in <span className="italic">threat hunting</span> and employs automation tools for 
-      <span className="italic">data protection</span>. He actively engages in extensive research on 
-      <span className="italic">data privacy and the exposure of sensitive information</span>.
-    </p>
-
-
-      <p>
-        In addition to his academic pursuits, Rahul has been serving as a{" "}
-        <span className="font-bold">Graduate Teaching Assistant</span> at his
-        university for the <span className="italic">past two years</span>,
-        contributing to the academic success of over{" "}
-        <span className="font-bold">500 students</span>.
+        I have been interested in computing since I was very young, but more specifically in programming. Throughout my childhood, I believed that I would work in this field and that this was my path in life. However, everything changed when I discovered the world of cybersecurity while I was in secondary school. I only had to do a little research to realise that this was my true calling. To this day, I still feel the same way.
       </p>
 
       <p>
-        Beyond his formal engagements, Rahul is a dedicated cybersecurity
-        enthusiast. He invests his free time in tackling challenges on platforms
-        such as <span className="font-bold">TryHackMe</span> and{" "}
-        <span className="font-bold">HackTheBox</span>, boasting a track record
-        of completing over <span className="italic">100 labs</span>.
-        Furthermore, he enjoys sharing his technical insights by contributing to
-        technical blogs on <span className="font-bold">Medium</span>, with a
-        focus on <span className="italic">Cybersecurity labs walkthroughs</span>
-        .
+        My name is <span className="font-bold">Alex Villegas</span> and I am a <span className="font-bold">cybersecurity student</span> at <span className="font-bold">ENTI-UB</span>. Driven by curiosity, I am always looking for ways to expand my knowledge and improve, which is why I think this field suits me so well. I am also very proactive and restless, so the dynamic and non-monotonous nature of cybersecurity is perfect for me.
       </p>
     </motion.section>
   );
