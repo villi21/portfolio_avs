@@ -59,11 +59,11 @@ export default function Contact() {
       <SectionHeading>Contáctame</SectionHeading>
 
       <p className="text-gray-700 -mt-6 dark:text-white/80">
-        Puedes contactarme directamente en{' '}
+        Feel free to reach me at{' '}
         <a className="underline" href="mailto:alexvillegassalguero@gmail.com">
           alexvillegassalguero@gmail.com
         </a>{' '}
-        o a través de este formulario.
+        or via the form below.
       </p>
 
       {/* Usamos onSubmit para llamar a nuestra función handleSubmit */}
