@@ -6,18 +6,17 @@ import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
-import "react-vertical-timeline-component/style.min.css";
 import { educationData } from "@/lib/data";
 import { useSectionInView } from "@/lib/hooks";
 import { useTheme } from "@/context/theme-context";
 
 export default function Education() {
-  const { ref } = useSectionInView("Education");
+  const { ref } = useSectionInView("Education", 0.5);
   const { theme } = useTheme();
 
   return (
     <section id="education" ref={ref} className="scroll-mt-28 mb-28 sm:mb-40">
-      <SectionHeading>My education</SectionHeading>
+      <SectionHeading>Education</SectionHeading>
       <VerticalTimeline lineColor="">
         {educationData.map((item, index) => (
           <React.Fragment key={index}>
@@ -45,28 +44,14 @@ export default function Education() {
               }}
             >
               <h3 className="font-semibold capitalize">{item.title}</h3>
-              <ul className="font-normal !mt-0">
-                {item.location.map((point, idz) => (
-                  <li key={idz}>{point}</li>
-                ))}
-              </ul>
-              <ul className="!mt-1 !font-normal text-gray-700 dark:text-white/75 list-disc">
-                {item.description.map((point, idx) => {
-                  if (
-                    point.startsWith("GPA:") ||
-                    point.startsWith("Relevant Coursework:")
-                  ) {
-                    const [heading, content] = point.split(":");
-                    return (
-                      <li key={idx}>
-                        <strong>{heading}:</strong>
-                        {content}
-                      </li>
-                    );
-                  } else {
-                    return <li key={idx}>{point}</li>;
-                  }
-                })}
+              <p className="font-normal !mt-0">{item.location.join(', ')}</p>
+              <ul className="list-disc pl-5 mt-2">
+                  <li className="!mt-1 !font-normal text-gray-700 dark:text-white/75">
+                    {item.description[0]}
+                  </li>
+                  <li className="!mt-1 !font-normal text-gray-700 dark:text-white/75">
+                    {item.description[1]}
+                  </li>
               </ul>
             </VerticalTimelineElement>
           </React.Fragment>

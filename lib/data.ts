@@ -46,84 +46,42 @@ export const links = [
 ] as const;
 
 export const experiencesData = [
-
-   {
-    title: "George Mason University",
-    location: ["Graduate Research Assistant", "Fairfax, VA, USA"],
-    description: [
-      "Actively involved in the development and execution of innovative research programs in Applied Information Technology and Data Analytics, collaborating closely with supervisors and leading researchers to refine large-scale assessment methodologies.",
-      "Spearhead the creation of multimedia content and oversee the management of project websites, contributing to the effective dissemination and presentation of research findings.",
-      "Play a critical role in the research process through comprehensive data collection and analysis, supporting team efforts in reporting and enhancing research designs to apply cutting-edge technologies and analytical techniques.",
-    ],
-    icon: React.createElement(LuGraduationCap),
-    date: "Feb 2023 - Present",
-  },
+  // 👇 ASEGÚRATE DE QUE TIENES ESTE CONTENIDO DENTRO DE LOS CORCHETES [] 👇
   {
-    title: "George Mason University",
-    location: ["Graduate Teaching Assistant", "Fairfax, VA, USA"],
+    title: "Buscando mi primera oportunidad laboral",
+    location: ["Abierto a roles de Ciberseguridad Junior"],
     description: [
-      "Responsible for setting and maintaining course and lab work for graduate and undergraduate courses in Computer Networking (CYSE 230) and Cyber Security (CYSE 499/610).",
-      "Worked to facilitate classroom learning for over 80 students every semester, including assignment and exam grading and feedback, conducting office hours, outlook email replies etc.",
+      "Aunque si tengo experiencia en el campo de la ciberseguridad, todavía no he tenido la oportunidad de empezar mi carrera laboral.",
     ],
-    icon: React.createElement(LuGraduationCap),
-    date: "Jan 2022 - Dec 2023",
+    icon: React.createElement(CgWorkAlt), // Asegúrate de que el icono está importado
+    date: "Actualmente",
   },
-  {
-    title: "Cyber3ra",
-    location: [
-      "Cyber Security Intern",
-      "Remote - New Delhi, India",
-    ],
-    description: [
-      "Enhanced vulnerability assessments for premier clients, introducing methods that escalated detection efficiency by 25%.",
-      "Enriched cybersecurity training, effectively mentoring over 100 participants in cutting-edge digital security best practices, markedly boosting their security proficiency.",
-    ],
-    icon: React.createElement(CgWorkAlt),
-    date: "May 2021 - Aug 2021",
-  },
-  {
-    title: "JSC Golla Engineering Pvt Ltd",
-    location: [
-      "Security Analyst",
-      "Remote - Delhi, India",
-    ],
-    description: [
-      "Optimized and maintained metrics and reports on vulnerability assessments, implementing best security strategies that reduced cyber-attacks by ~13%. ",
-      "Expertly analyzed and monitored SIEM alerts with IBM QRadar and Splunk, elevating threat detection by ~10% through advanced network and log data analysis, significantly enhancing cybersecurity defenses.",
-      "Directed investigations into malicious email, led vulnerability assessments, coordinating with internal teams to identify threats. Conducted security training for 50+ staff, enhancing organizational security awareness.",
-      "Spearheaded technical support and revitalized vulnerability management program, driving continuous improvements, and proposing effective mitigation and remediation solutions. ",
-    ],
-    icon: React.createElement(CgPolaroid),
-    date: "June 2019 - Apr 2021",
-  },
+  // ... (puedes añadir más experiencias aquí)
 ] as const;
 
 export const educationData = [
+  // 👇 ASEGÚRATE DE QUE TIENES ESTE CONTENIDO DENTRO DE LOS CORCHETES [] 👇
   {
-    title: "George Mason University",
-    location: [
-      "Master's of Science in Cybersecurit and Information Systems",
-      "Fairfax, Virginia, United States",
-    ],
+    title: "Grado en Ciberseguridad",
+    location: ["ENTI - Universitat de Barcelona"],
     description: [
-      "GPA: 3.75/4.0",
-      "Relevant Coursework: Computer Networking, Hardware and Cyber-Physical Systems, Cybersecurity Engineering Fundamentals, Cloud Computing Security, Malware Reverse Engineering, Secure Software Programming, Penetration Testing and Digital Forensics, etc.",
+      "Hacking Ético & Auditoría",
+      "Informática forense y análisis de malware",
+      // ... etc
     ],
-    icon: React.createElement(LuGraduationCap),
-    date: "August 2021 - December 2023",
+    icon: React.createElement(LuGraduationCap), // Asegúrate de que el icono está importado
+    date: "Septiembre 2025 - Actualmente",
   },
   {
-    title: "Madan Mohan Malaviya University of Technology",
-    location: [
-      "Bachelor of Technology in Computer Science and Engineering",
-      "Gorakhpur, Uttar Pradesh, India",
-    ],
+    title: "Bachillerato Científico-Tecnológico",
+    location: ["Institut Joaquim Rubió I Ors"],
     description: [
-      "GPA: 3.5/4.0",
-      "Relevant Coursework: Artifical Intelligence, Database Systems, Parallel and Distributed Computing, Operating Systems, Web Technology, Intro to Machine Learning, etc.",
+      "Fundamentos de la programación",
+      "Principios de la electrónica",
+      // ... etc
     ],
     icon: React.createElement(LuGraduationCap),
-    date: "July 2017 - August 2021",
+    date: "Septiembre 2022 - Junio 2025",
   },
 ] as const;
 
