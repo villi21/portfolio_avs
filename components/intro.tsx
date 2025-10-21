@@ -10,7 +10,7 @@ import { FaGithubSquare } from 'react-icons/fa';
 const Intro = () => {
   return (
     <section
-      id="inicio"
+      id="home"
       // 👇 CAMBIO: AÑADIMOS h-screen PARA QUE OCUPE TODA LA PANTALLA 👇
       className="h-screen max-w-5xl mx-auto scroll-mt-28 flex flex-col justify-center"
     >

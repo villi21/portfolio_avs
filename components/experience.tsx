@@ -16,11 +16,12 @@ export default function Experience() {
 
   return (
     <section id="experience" ref={ref} className="scroll-mt-28 mb-28 sm:mb-40">
-      <SectionHeading>Experience</SectionHeading>
+      <SectionHeading>My experience</SectionHeading>
       <VerticalTimeline lineColor="">
         {experiencesData.map((item, index) => (
           <React.Fragment key={index}>
             <VerticalTimelineElement
+              visible={true}
               contentStyle={{
                 background:
                   theme === "light" ? "#f3f4f6" : "rgba(255, 255, 255, 0.05)",
@@ -44,8 +45,10 @@ export default function Experience() {
               }}
             >
               <h3 className="font-semibold capitalize">{item.title}</h3>
-              <p className="font-normal !mt-0">{item.location.join(', ')}</p>
-              <ul className="list-disc pl-5 mt-2">
+              {item.location.map((loc, i) => (
+                <p key={i} className="font-normal !mt-0">{loc}</p>
+              ))}
+              <ul className="list-disc pl-5 mt-2 space-y-1">
                 {item.description.map((point, i) => (
                   <li key={i} className="!mt-1 !font-normal text-gray-700 dark:text-white/75">
                     {point}

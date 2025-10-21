@@ -14,74 +14,48 @@ import srs from "@/public/srs.png";
 import colordetector from "@/public/colordetector.jpeg";
 
 export const links = [
-  {
-    name: "Home",
-    hash: "#home",
-  },
-  {
-    name: "About",
-    hash: "#about",
-  },
-  {
-    name: "Experience",
-    hash: "#experience",
-  },
-  {
-    name: "Projects",
-    hash: "#projects",
-  },
-  {
-    name: "Education",
-    hash: "#education",
-  },
-  {
-    name: "Certificates",
-    hash: "#certificates",
-  },
-
-  {
-    name: "Contact",
-    hash: "#contact",
-  },
+  { name: "Home", hash: "#home" },
+  { name: "About", hash: "#about" },
+  { name: "Experience", hash: "#experience" },
+  { name: "Projects", hash: "#projects" },
+  { name: "Education", hash: "#education" },
+  { name: "Certificates", hash: "#certificates" },
+  { name: "Contact", hash: "#contact" },
 ] as const;
 
 export const experiencesData = [
-  // 👇 ASEGÚRATE DE QUE TIENES ESTE CONTENIDO DENTRO DE LOS CORCHETES [] 👇
   {
-    title: "Buscando mi primera oportunidad laboral",
-    location: ["Abierto a roles de Ciberseguridad Junior"],
+    title: "Cybersecurity Student",
+    location: ["Open to Internships & Collaborative Projects"],
     description: [
-      "Aunque si tengo experiencia en el campo de la ciberseguridad, todavía no he tenido la oportunidad de empezar mi carrera laboral.",
-    ],
-    icon: React.createElement(CgWorkAlt), // Asegúrate de que el icono está importado
-    date: "Actualmente",
+  "Applying theoretical knowledge from my cybersecurity degree to practical, hands-on projects.",
+  "Actively seeking challenging projects and internship opportunities to further develop my knowledge and contribute to a real-world security team."
+],
+    icon: React.createElement(CgWorkAlt),
+    date: "Currently",
   },
-  // ... (puedes añadir más experiencias aquí)
 ] as const;
 
 export const educationData = [
-  // 👇 ASEGÚRATE DE QUE TIENES ESTE CONTENIDO DENTRO DE LOS CORCHETES [] 👇
   {
     title: "Grado en Ciberseguridad",
-    location: ["ENTI - Universitat de Barcelona"],
+    location: ["ENTI - Universitat de Barcelona, España"],
     description: [
-      "Hacking Ético & Auditoría",
-      "Informática forense y análisis de malware",
-      // ... etc
+      "GPA: N/A (en curso)",
+      "Relevant Coursework: Hacking Ético, Análisis Forense, Redes Seguras.",
     ],
-    icon: React.createElement(LuGraduationCap), // Asegúrate de que el icono está importado
-    date: "Septiembre 2025 - Actualmente",
+    icon: React.createElement(LuGraduationCap),
+    date: "2025 - Presente",
   },
   {
     title: "Bachillerato Científico-Tecnológico",
-    location: ["Institut Joaquim Rubió I Ors"],
+    location: ["Institut Joaquim Rubió I Ors, España"],
     description: [
-      "Fundamentos de la programación",
-      "Principios de la electrónica",
-      // ... etc
+      "Especialización en programación, electrónica y tecnología industrial.",
+      "Fundamentos de física y matemáticas avanzadas.",
     ],
     icon: React.createElement(LuGraduationCap),
-    date: "Septiembre 2022 - Junio 2025",
+    date: "2022 - 2025",
   },
 ] as const;
 

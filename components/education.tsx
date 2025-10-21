@@ -11,16 +11,17 @@ import { useSectionInView } from "@/lib/hooks";
 import { useTheme } from "@/context/theme-context";
 
 export default function Education() {
-  const { ref } = useSectionInView("Education", 0.5);
+  const { ref } = useSectionInView("Education");
   const { theme } = useTheme();
 
   return (
     <section id="education" ref={ref} className="scroll-mt-28 mb-28 sm:mb-40">
-      <SectionHeading>Education</SectionHeading>
+      <SectionHeading>My education</SectionHeading>
       <VerticalTimeline lineColor="">
         {educationData.map((item, index) => (
           <React.Fragment key={index}>
             <VerticalTimelineElement
+              visible={true}
               contentStyle={{
                 background:
                   theme === "light" ? "#f3f4f6" : "rgba(255, 255, 255, 0.05)",
@@ -45,13 +46,18 @@ export default function Education() {
             >
               <h3 className="font-semibold capitalize">{item.title}</h3>
               <p className="font-normal !mt-0">{item.location.join(', ')}</p>
-              <ul className="list-disc pl-5 mt-2">
-                  <li className="!mt-1 !font-normal text-gray-700 dark:text-white/75">
-                    {item.description[0]}
-                  </li>
-                  <li className="!mt-1 !font-normal text-gray-700 dark:text-white/75">
-                    {item.description[1]}
-                  </li>
+              <ul className="!mt-2 !font-normal text-gray-700 dark:text-white/75 list-disc pl-5 space-y-1">
+                {item.description.map((point, idx) => {
+                  const parts = point.split(":");
+                  if (parts.length > 1 && (parts[0] === "GPA" || parts[0] === "Relevant Coursework")) {
+                    return (
+                      <li key={idx}>
+                        <strong>{parts[0]}:</strong>{parts.slice(1).join(":")}
+                      </li>
+                    );
+                  }
+                  return <li key={idx}>{point}</li>;
+                })}
               </ul>
             </VerticalTimelineElement>
           </React.Fragment>
