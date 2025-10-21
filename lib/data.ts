@@ -38,24 +38,28 @@ export const experiencesData = [
 
 export const educationData = [
   {
-    title: "Grado en Ciberseguridad",
-    location: ["ENTI - Universitat de Barcelona, España"],
+    title: "Bachelor of Science in Cybersecurity",
+    location: ["ENTI - Universitat de Barcelona, Catalonia, Spain"],
     description: [
-      "GPA: N/A (en curso)",
-      "Relevant Coursework: Hacking Ético, Análisis Forense, Redes Seguras.",
+      "Ethical Hacking & Auditing",
+      "Computer Forensics & Malware Analysis",
+      "Secure Systems & Networks",
+      "Security Governance & Compliance"
     ],
     icon: React.createElement(LuGraduationCap),
-    date: "2025 - Presente",
+    date: "2025 - Currently",
   },
   {
-    title: "Bachillerato Científico-Tecnológico",
-    location: ["Institut Joaquim Rubió I Ors, España"],
+    title: "High School Diploma, Science & Technology Specialisation",
+    location: ["Institut Joaquim Rubió I Ors, Catalonia, Spain"],
     description: [
-      "Especialización en programación, electrónica y tecnología industrial.",
-      "Fundamentos de física y matemáticas avanzadas.",
+      "Fundamentals of Programming",
+      "Principles of Electronics",
+      "Industrial Technology",
+      "Advanced Mathematics & Physics"
     ],
     icon: React.createElement(LuGraduationCap),
-    date: "2022 - 2025",
+    date: "September 2022 - June 2025",
   },
 ] as const;
 
