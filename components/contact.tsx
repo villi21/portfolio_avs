@@ -56,7 +56,7 @@ export default function Contact() {
       transition={{ duration: 1 }}
       viewport={{ once: true }}
     >
-      <SectionHeading>Contáctame</SectionHeading>
+      <SectionHeading>Contact Me</SectionHeading>
 
       <p className="text-gray-700 -mt-6 dark:text-white/80">
         Feel free to reach me at{' '}

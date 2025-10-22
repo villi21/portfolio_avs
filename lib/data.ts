@@ -4,7 +4,7 @@ import { FaReact } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
 import android from "@/public/android.jpeg";
 import mypass from "@/public/mypass.jpeg";
-import comptiasecurity from "@/public/comptiasecurity.png";
+import CAE from "@/public/CAE.png";
 import comptiacysa from "@/public/comptiacysa.png";
 import securityknowledge from "@/public/securityknowledge.png";
 import eccouncil from "@/public/eccouncil.png";
@@ -104,75 +104,15 @@ export const projectsData = [
 
 export const certificatesData = [
   {
-    title: "Comptia: Security+ CE",
+    title: "Cambridge English: C1 Advanced (CAE)",
     tags: [
-      "Access Control",
-      "Cryptography",
-      "Threat Analysis",
-      "Threat Detection",
-      "Network Security",
-      "Security Policies",
-      "Disaster Recovery Planning",
+      "FLUENT COMMUNICATION",
+      "FLEXIBLE LANGUAGE USE",
+      "ADVANCED COMPREHENSION",
+      "ACADEMIC & PROFESSIONAL ENGLISH",
     ],
-    imageUrl: comptiasecurity,
-  },
-  {
-    title: "Comptia: CySA+ CS0-003",
-    tags: [
-      "Threat and Vuln Management",
-      "Security Operations & Monitoring",
-      "Incident Response",
-      "GRC Assessment",
-      "Software and System Security",
-      "Security Architecture and Toolset",
-    ],
-    imageUrl: comptiacysa,
-  },
-  {
-    title: "Certificate of Cloud Security Knowledge V4",
-    tags: [
-      "Cloud Architecture Understanding",
-      "Cloud Security Governance",
-      "Data Security for Cloud Env",
-      "Cloud Infrastructure Security",
-      "Incident Response & Disaster Rec",
-    ],
-    imageUrl: securityknowledge,
-  },
-  {
-    title: "EC-Council: Certified Ethical Hacker",
-    tags: [
-      "Vulnerability Assessment",
-      "Social Engineering Attacks",
-      "Malware Threat Analysis",
-      "Hacking Mobile Platform",
-      "Footprinting and Reconnaissance",
-    ],
-    imageUrl: eccouncil,
-  },
-  {
-    title: "MTA: Security Fundamental",
-    tags: [
-      "Security Layers",
-      "Operating System Security",
-      "Network Security",
-      "Security Protocol and Standard",
-      "Software Security",
-    ],
-    imageUrl: mta1,
-  },
-  {
-    title: "MTA: Networking Fundamentals",
-    tags: [
-      "Networking Infrastructure",
-      "Network Hardware",
-      "Protocols and Services",
-      "Network Security",
-      "TCP/IP Configuration",
-      "Wireless Networking",
-    ],
-    imageUrl: mta2,
-  },
+    imageUrl: CAE,
+  }
 ] as const;
 
 export const skillsData = [
