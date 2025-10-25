@@ -11,16 +11,18 @@ import { useSectionInView } from "@/lib/hooks";
 import { useTheme } from "@/context/theme-context";
 
 export default function Education() {
-  const { ref } = useSectionInView("Education");
+  const { ref } = useSectionInView("Education"); // Asegura que coincide con lib/data.ts links
   const { theme } = useTheme();
 
   return (
     <section id="education" ref={ref} className="scroll-mt-28 mb-28 sm:mb-40">
-      <SectionHeading>Education</SectionHeading>
-      <VerticalTimeline lineColor="">
+      <SectionHeading>Educación</SectionHeading>
+      <VerticalTimeline>
         {educationData.map((item, index) => (
           <React.Fragment key={index}>
             <VerticalTimelineElement
+              // 👇 FUERZA POSICIÓN IZQUIERDA 👇
+              position="left" 
               visible={true}
               contentStyle={{
                 background:
@@ -30,16 +32,12 @@ export default function Education() {
                 textAlign: "left",
                 padding: "1.3rem 2rem",
               }}
-              // 👇 CAMBIO CLAVE: Ajustamos dinámicamente la flecha 👇
               contentArrowStyle={{
-                // Para los elementos de la izquierda (índice par), la flecha apunta a la izquierda.
-                // Para los de la derecha (índice impar), apunta a la derecha.
-                borderRight: index % 2 === 0 
-                  ? (theme === "light" ? "0.4rem solid #9ca3af" : "0.4rem solid rgba(255, 255, 255, 0.5)")
-                  : "none",
-                borderLeft: index % 2 !== 0
-                  ? (theme === "light" ? "0.4rem solid #9ca3af" : "0.4rem solid rgba(255, 255, 255, 0.5)")
-                  : "none",
+                // 👇 FLECHA IZQUIERDA 👇
+                borderLeft:
+                  theme === "light"
+                    ? "0.4rem solid #9ca3af"
+                    : "0.4rem solid rgba(255, 255, 255, 0.5)",
               }}
               date={item.date}
               icon={item.icon}
@@ -49,12 +47,22 @@ export default function Education() {
                 fontSize: "1.5rem",
               }}
             >
-              <h3 className="font-semibold capitalize">{item.title}</h3>
-              <p className="font-normal !mt-0">{item.location.join(', ')}</p>
+              <h3 className="font-semibold capitalize text-gray-900 dark:text-white/90">{item.title}</h3>
+               {item.location && item.location.map((loc, i) => (
+                 <p key={i} className="!mt-0 !font-normal text-gray-800 dark:text-gray-400">{loc}</p>
+              ))}
               <ul className="!mt-2 !font-normal text-gray-700 dark:text-white/75 list-disc pl-5 space-y-1">
-                {item.description.map((point, idx) => (
-                  <li key={idx}>{point}</li>
-                ))}
+                {item.description.map((point, idx) => {
+                  const parts = point.split(":");
+                  if (parts.length > 1 && (parts[0] === "GPA" || parts[0] === "Relevant Coursework")) {
+                    return (
+                      <li key={idx}>
+                        <strong>{parts[0]}:</strong>{parts.slice(1).join(":")}
+                      </li>
+                    );
+                  }
+                  return <li key={idx}>{point}</li>;
+                })}
               </ul>
             </VerticalTimelineElement>
           </React.Fragment>

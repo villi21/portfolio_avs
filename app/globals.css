@@ -5,8 +5,8 @@
 @tailwind utilities;
 
 html {
-  --line-color: #e5e7eb;
-  --cursor-color: #000;
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
 }
 
 html.dark {
@@ -18,7 +18,84 @@ html.dark {
   @apply border border-black/10;
 }
 
+body {
+  @apply bg-gray-50 text-gray-950 relative pt-28 sm:pt-36 dark:bg-gray-900 dark:text-gray-50 dark:text-opacity-90;
+}
+
 .grecaptcha-badge { 
   visibility: hidden !important;
 }
 
+@media only screen and (min-width: 1170px) {
+  /* Centra la línea principal */
+  .vertical-timeline::before {
+    background: #cbd5e1 !important; /* Color visible */
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 4px !important;
+  }
+
+  /* --- FORZAR ANCHO Y POSICIÓN SIMÉTRICA --- */
+
+  /* Ancho uniforme para bloques IZQUIERDA */
+  .vertical-timeline--two-columns .vertical-timeline-element--left .vertical-timeline-element-content {
+    width: 45% !important; /* Ancho deseado */
+    left: 0 !important; /* Asegura posición izquierda */
+    padding: 1.3rem 2rem !important; /* Padding consistente */
+  }
+
+  /* Ancho uniforme para bloques DERECHA */
+  .vertical-timeline--two-columns .vertical-timeline-element--right .vertical-timeline-element-content {
+    width: 45% !important; /* Mismo ancho */
+    left: 55% !important; /* Asegura posición derecha */
+    padding: 1.3rem 2rem !important; /* Mismo padding */
+  }
+
+  /* --- POSICIÓN CORRECTA DE FECHAS --- */
+
+  /* Fecha para bloques IZQUIERDA (se muestra a la derecha) */
+  .vertical-timeline--two-columns .vertical-timeline-element--left .vertical-timeline-element-date {
+    left: 110%; 
+    text-align: left;
+    padding: 0.8rem 1rem !important;
+    width: auto !important;
+    color: inherit !important;
+    opacity: 0.8 !important;
+  }
+
+  /* Fecha para bloques DERECHA (se muestra a la izquierda) */
+  .vertical-timeline--two-columns .vertical-timeline-element--right .vertical-timeline-element-date {
+    left: auto; 
+    right: 110%; 
+    text-align: right;
+    padding: 0.8rem 1rem !important;
+    width: auto !important;
+    color: inherit !important;
+    opacity: 0.8 !important;
+  }
+
+  /* --- FLECHAS (Opcional: puedes ocultarlas si prefieres) --- */
+  .vertical-timeline-element-content-arrow {
+      display: block !important; /* Asegura que se vean si las quieres */
+  }
+   .vertical-timeline--two-columns .vertical-timeline-element--left .vertical-timeline-element-content-arrow {
+      left: 100% !important; margin-left: -7px !important; border-left: 7px solid rgba(255, 255, 255, 0.5) !important; border-right: none !important; /* Ajusta color si es necesario */
+  }
+  .vertical-timeline--two-columns .vertical-timeline-element--right .vertical-timeline-element-content-arrow {
+      left: -7px !important; border-right: 7px solid rgba(255, 255, 255, 0.5) !important; border-left: none !important; /* Ajusta color si es necesario */
+  }
+
+  /* Asegura visibilidad iconos */
+  .vertical-timeline-element-icon {
+      visibility: visible !important; opacity: 1 !important; display: flex !important;
+  }
+}
+
+/* Visibilidad móvil */
+.vertical-timeline-element,
+.vertical-timeline-element-content,
+.vertical-timeline-element-icon,
+.vertical-timeline--no-wrap .vertical-timeline-element-date {
+  visibility: visible !important;
+  opacity: 1 !important;
+}

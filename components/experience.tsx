@@ -11,16 +11,18 @@ import { useSectionInView } from "@/lib/hooks";
 import { useTheme } from "@/context/theme-context";
 
 export default function Experience() {
-  const { ref } = useSectionInView("Experience");
+  const { ref } = useSectionInView("Experience"); // Asegura que coincide con lib/data.ts links
   const { theme } = useTheme();
 
   return (
     <section id="experience" ref={ref} className="scroll-mt-28 mb-28 sm:mb-40">
-      <SectionHeading>My experience</SectionHeading>
-      <VerticalTimeline lineColor="">
+      <SectionHeading>Experiencia</SectionHeading>
+      <VerticalTimeline>
         {experiencesData.map((item, index) => (
           <React.Fragment key={index}>
             <VerticalTimelineElement
+              // 👇 FUERZA POSICIÓN IZQUIERDA 👇
+              position="left" 
               visible={true}
               contentStyle={{
                 background:
@@ -31,7 +33,8 @@ export default function Experience() {
                 padding: "1.3rem 2rem",
               }}
               contentArrowStyle={{
-                borderRight:
+                // 👇 FLECHA IZQUIERDA 👇
+                borderLeft: 
                   theme === "light"
                     ? "0.4rem solid #9ca3af"
                     : "0.4rem solid rgba(255, 255, 255, 0.5)",
@@ -44,9 +47,9 @@ export default function Experience() {
                 fontSize: "1.5rem",
               }}
             >
-              <h3 className="font-semibold capitalize">{item.title}</h3>
-              {item.location.map((loc, i) => (
-                <p key={i} className="font-normal !mt-0">{loc}</p>
+              <h3 className="font-semibold capitalize text-gray-900 dark:text-white/90">{item.title}</h3>
+               {item.location && item.location.map((loc, i) => (
+                 <p key={i} className="!mt-0 !font-normal text-gray-800 dark:text-gray-400">{loc}</p>
               ))}
               <ul className="list-disc pl-5 mt-2 space-y-1">
                 {item.description.map((point, i) => (
