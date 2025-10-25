@@ -21,3 +21,16 @@ html.dark {
 .grecaptcha-badge { 
   visibility: hidden !important;
 }
+
+@media only screen and (min-width: 1170px) {
+  /* ... (otras reglas) ... */
+
+  /* Flechas izquierda */
+   .vertical-timeline--two-columns .vertical-timeline-element--left .vertical-timeline-element-content-arrow {
+      left: 100% !important; margin-left: -7px !important; border-left: 7px solid rgba(255, 255, 255, 0.5) !important; border-right: none !important; display: block !important;
+  }
+  /* Flechas derecha */
+  .vertical-timeline--two-columns .vertical-timeline-element--right .vertical-timeline-element-content-arrow {
+      left: -7px !important; border-right: 7px solid rgba(255, 255, 255, 0.5) !important; border-left: none !important; display: block !important;
+  }
+}

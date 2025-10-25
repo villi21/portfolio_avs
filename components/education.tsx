@@ -9,6 +9,7 @@ import {
 import { experiencesData } from "@/lib/data";
 import { useSectionInView } from "@/lib/hooks";
 import { useTheme } from "@/context/theme-context";
+import { LuGraduationCap } from "react-icons/lu";
 
 export default function Experience() {
   const { ref } = useSectionInView("Experience");
@@ -16,9 +17,9 @@ export default function Experience() {
 
   return (
     <section id="experience" ref={ref} className="scroll-mt-28 mb-28 sm:mb-40">
-      <SectionHeading>My experience</SectionHeading>
+      <SectionHeading>My education</SectionHeading>
       <VerticalTimeline lineColor="">
-        {/* Bloque 1 (Izquierda) */}
+        {/* Bloque 1 (Izquierda - usa el map original) */}
         {experiencesData.map((item, index) => (
           <React.Fragment key={index}>
             <VerticalTimelineElement
@@ -37,20 +38,25 @@ export default function Experience() {
                     ? "0.4rem solid #9ca3af"
                     : "0.4rem solid rgba(255, 255, 255, 0.5)",
               }}
-              date={item.date}
-              icon={item.icon}
+              date={"2025 - Currently"}
+              icon={React.createElement(LuGraduationCap)}
               iconStyle={{
                 background:
                   theme === "light" ? "white" : "rgba(255, 255, 255, 0.15)",
                 fontSize: "1.5rem",
               }}
             >
-              <h3 className="font-semibold capitalize">{item.title}</h3>
-              {item.location.map((loc, i) => (
+              <h3 className="font-semibold capitalize">{"Bachelor degree in Cybersecurity"}</h3>
+              {["ENTI - Universitat de Barcelona, Catalonia, Spain"].map((loc, i) => (
                 <p key={i} className="font-normal !mt-0">{loc}</p>
               ))}
               <ul className="list-disc pl-5 mt-2 space-y-1">
-                {item.description.map((point, i) => (
+                {[
+      "Ethical Hacking & Auditing",
+      "Computer Forensics & Malware Analysis",
+      "Secure Systems & Networks",
+      "Security Governance & Compliance"
+    ].map((point, i) => (
                   <li key={i} className="!mt-1 !font-normal text-gray-700 dark:text-white/75">
                     {point}
                   </li>
@@ -60,7 +66,8 @@ export default function Experience() {
           </React.Fragment>
         ))}
 
-        {/* --- NUEVO BLOQUE (Derecha) con flecha apuntando a la izquierda --- */}
+        {/* --- NUEVO BLOQUE AÑADIDO (Derecha) --- */}
+        {/* Aquí la flecha roja será eliminada */}
         <React.Fragment>
           <VerticalTimelineElement
             position="right"
@@ -73,15 +80,15 @@ export default function Experience() {
               textAlign: "left",
               padding: "1.3rem 2rem",
             }}
-            // 👇 CAMBIO CLAVE: Añadimos la flecha a la izquierda para este bloque 👇
+            // 👇 CAMBIO CLAVE: Quitamos la flecha completamente para este bloque 👇
             contentArrowStyle={{
-              borderLeft: // La flecha "sale" del lado izquierdo del bloque
-                theme === "light"
-                  ? "0.4rem solid #f3f4f6" // Color del fondo del bloque en light mode
-                  : "0.4rem solid rgba(255, 255, 255, 0.05)", // Color del fondo del bloque en dark mode
+                borderLeft:
+                  theme === "light"
+                    ? "0.4rem solid #9ca3af"
+                    : "0.4rem solid rgba(255, 255, 255, 0.5)",
             }}
-            date="2022 - 2025"
-            icon={experiencesData.length > 0 ? experiencesData[0].icon : <></>}
+            date="2022 - 2025" // Texto de ejemplo para la fecha
+            icon={React.createElement(LuGraduationCap)} // Reutilizamos el icono
             iconStyle={{
               background:
                 theme === "light" ? "white" : "rgba(255, 255, 255, 0.15)",
