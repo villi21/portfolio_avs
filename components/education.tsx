@@ -16,12 +16,11 @@ export default function Education() {
 
   return (
     <section id="education" ref={ref} className="scroll-mt-28 mb-28 sm:mb-40">
-      <SectionHeading>Education</SectionHeading>
+      <SectionHeading>My education</SectionHeading>
       <VerticalTimeline lineColor="">
         {educationData.map((item, index) => (
           <React.Fragment key={index}>
             <VerticalTimelineElement
-              visible={true}
               contentStyle={{
                 background:
                   theme === "light" ? "#f3f4f6" : "rgba(255, 255, 255, 0.05)",
@@ -30,16 +29,11 @@ export default function Education() {
                 textAlign: "left",
                 padding: "1.3rem 2rem",
               }}
-              // 👇 CAMBIO CLAVE: Ajustamos dinámicamente la flecha 👇
               contentArrowStyle={{
-                // Para los elementos de la izquierda (índice par), la flecha apunta a la izquierda.
-                // Para los de la derecha (índice impar), apunta a la derecha.
-                borderRight: index % 2 === 0 
-                  ? (theme === "light" ? "0.4rem solid #9ca3af" : "0.4rem solid rgba(255, 255, 255, 0.5)")
-                  : "none",
-                borderLeft: index % 2 !== 0
-                  ? (theme === "light" ? "0.4rem solid #9ca3af" : "0.4rem solid rgba(255, 255, 255, 0.5)")
-                  : "none",
+                borderRight:
+                  theme === "light"
+                    ? "0.4rem solid #9ca3af"
+                    : "0.4rem solid rgba(255, 255, 255, 0.5)",
               }}
               date={item.date}
               icon={item.icon}
@@ -50,11 +44,28 @@ export default function Education() {
               }}
             >
               <h3 className="font-semibold capitalize">{item.title}</h3>
-              <p className="font-normal !mt-0">{item.location.join(', ')}</p>
-              <ul className="!mt-2 !font-normal text-gray-700 dark:text-white/75 list-disc pl-5 space-y-1">
-                {item.description.map((point, idx) => (
-                  <li key={idx}>{point}</li>
+              <ul className="font-normal !mt-0">
+                {item.location.map((point, idz) => (
+                  <li key={idz}>{point}</li>
                 ))}
+              </ul>
+              <ul className="!mt-1 !font-normal text-gray-700 dark:text-white/75 list-disc">
+                {item.description.map((point, idx) => {
+                  if (
+                    point.startsWith("GPA:") ||
+                    point.startsWith("Relevant Coursework:")
+                  ) {
+                    const [heading, content] = point.split(":");
+                    return (
+                      <li key={idx}>
+                        <strong>{heading}:</strong>
+                        {content}
+                      </li>
+                    );
+                  } else {
+                    return <li key={idx}>{point}</li>;
+                  }
+                })}
               </ul>
             </VerticalTimelineElement>
           </React.Fragment>
