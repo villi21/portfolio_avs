@@ -38,7 +38,10 @@ export const educationData = [
       "ENTI - Universitat de Barcelona, Catalonia, Spain"
     ],
     description: [
-      "Ethical Hacking & Auditing, Computer Forensics & Malware Analysis, Secure Systems & Networks, Security Governance & Compliance",
+      "Fundamentals of Programming",
+      "Principles of Electronics",
+      "Industrial Technology",
+      "Advanced Mathematics & Physics"
     ],
     icon: React.createElement(LuGraduationCap),
     date: "2025 - Currently",

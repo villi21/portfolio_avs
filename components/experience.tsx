@@ -16,7 +16,7 @@ export default function Experience() {
   const { theme } = useTheme();
 
   return (
-    <section id="experience" ref={ref} className="scroll-mt-28 mb-28 sm:mb-40">
+    <section id="experience" ref={ref} className="scroll-mt-28 mb-28 sm:mb-40 min-w-full">
       <SectionHeading>My experience</SectionHeading>
       <VerticalTimeline lineColor="">
         {/* Mapeamos sobre experiencesData */}
@@ -39,6 +39,7 @@ export default function Experience() {
                     : "0.4rem solid rgba(255, 255, 255, 0.5)", // Estilo de flecha consistente
               }}
               date={item.date}
+              dateClassName="asdasd"
               icon={item.icon}
               iconStyle={{
                 background:

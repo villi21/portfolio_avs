@@ -18,7 +18,7 @@ export default function Education() {
 
   return (
     // 4. ID de la sección cambiado a "education"
-    <section id="education" ref={ref} className="scroll-mt-28 mb-28 sm:mb-40">
+    <section id="education" ref={ref} className="scroll-mt-28 mb-28 sm:mb-40 min-w-full">
       {/* 5. Título de la sección cambiado */}
       <SectionHeading>My Education</SectionHeading>
       <VerticalTimeline lineColor="">
