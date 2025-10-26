@@ -1,17 +1,11 @@
 import React from "react";
-import { CgPolaroid, CgWorkAlt } from "react-icons/cg";
-import { FaReact } from "react-icons/fa";
+import { CgWorkAlt } from "react-icons/cg";
 import { LuGraduationCap } from "react-icons/lu";
+import srs from "@/public/srs.png";
 import android from "@/public/android.jpeg";
 import mypass from "@/public/mypass.jpeg";
-import CAE from "@/public/CAE.png";
-import comptiacysa from "@/public/comptiacysa.png";
-import securityknowledge from "@/public/securityknowledge.png";
-import eccouncil from "@/public/eccouncil.png";
-import mta1 from "@/public/mta1.png";
-import mta2 from "@/public/mta2.png";
-import srs from "@/public/srs.png";
 import colordetector from "@/public/colordetector.jpeg";
+import CAE from "@/public/CAE.png";
 
 export const links = [
   { name: "Home", hash: "#home" },
@@ -25,12 +19,12 @@ export const links = [
 
 export const experiencesData = [
   {
-    title: "Cybersecurity Student",
+    title: "Cybersecurity Student & Practitioner",
     location: ["Open to Internships & Collaborative Projects"],
     description: [
-  "Applying theoretical knowledge from my cybersecurity degree to practical, hands-on projects.",
-  "Actively seeking challenging projects and internship opportunities to further develop my knowledge and contribute to a real-world security team."
-],
+      "Applying theoretical knowledge from my cybersecurity degree to practical, hands-on projects.",
+      "Actively seeking challenging projects and internship opportunities to further develop my expertise."
+    ],
     icon: React.createElement(CgWorkAlt),
     date: "Currently",
   },
@@ -38,20 +32,26 @@ export const experiencesData = [
 
 export const educationData = [
   {
-    title: "Bachelor of Science in Cybersecurity",
-    location: ["ENTI - Universitat de Barcelona, Catalonia, Spain"],
+    title: "Bachelor Of Science In Cybersecurity",
+    // 👇 CAMBIO: Separado en dos líneas para que coincida con la plantilla original 👇
+    location: [
+      "ENTI - Universitat de Barcelona,",
+      "Catalonia, Spain"
+    ],
     description: [
-      "Ethical Hacking & Auditing",
-      "Computer Forensics & Malware Analysis",
-      "Secure Systems & Networks",
-      "Security Governance & Compliance"
+      "GPA: N/A (in course)",
+      "Relevant Coursework: Ethical Hacking & Auditing, Computer Forensics & Malware Analysis, Secure Systems & Networks, Security Governance & Compliance",
     ],
     icon: React.createElement(LuGraduationCap),
     date: "2025 - Currently",
   },
   {
     title: "High School Diploma, Science & Technology Specialisation",
-    location: ["Institut Joaquim Rubió I Ors, Catalonia, Spain"],
+    // 👇 CAMBIO: Separado en dos líneas para que coincida con la plantilla original 👇
+    location: [
+      "Institut Joaquim Rubió I Ors,",
+      "Catalonia, Spain"
+    ],
     description: [
       "Fundamentals of Programming",
       "Principles of Electronics",
@@ -70,9 +70,7 @@ export const projectsData = [
       "A comprehensive tool for identifying vulnerabilities and gathering critical security information to enhance system protection.",
     tags: ["Python", "Socket", "Subprocess"],
     imageUrl:srs,
-    gitLink: [
-      "",
-    ],
+    gitLink: [""],
   },
   {
     title: "Android Music Store",
@@ -80,9 +78,7 @@ export const projectsData = [
       "An android application for a music store that needs to develop a customer loyalty program supported by an Oracle database backend.",
     tags: ["Java", "JSP", "Android Development", "Oracle", "SQL"],
     imageUrl:android,
-    gitLink: [
-      "",
-    ],
+    gitLink: [""],
   },
   {
     title: "MyPass Manage",
@@ -116,34 +112,9 @@ export const certificatesData = [
 ] as const;
 
 export const skillsData = [
-  "Python",
-  "Bash Scripting",
-  "MySQL",
-  "R Language",
-  "C Language",
-  "HTML",
-  "CSS",
-  "Git",
-  "OSINT",
-  "OWASP",
-  "SEIM",
-  "ISO 27001",
-  "ISO 27002",
-  "HIPPA",
-  "GDPR",
-  "NIST",
-  "PCI DSS",
-  "Burp Suite",
-  "Nmap",
-  "Metasploit",
-  "Wireshark",
-  "Dirbuster",
-  "John the Ripper",
-  "Ettercap",
-  "Aircrack-ng",
-  "Nessus",
-  "Acunetix",
-  "Splunk",
-  "Malware Reverse Engineering",
-  "Cryptography",
+  "Python", "Bash Scripting", "MySQL", "C Language", "HTML", "CSS",
+  "Git", "OSINT", "OWASP", "SEIM", "ISO 27001", "ISO 27002", "HIPPA", 
+  "GDPR", "NIST", "PCI DSS", "Burp Suite", "Nmap", "Metasploit", 
+  "Wireshark", "Dirbuster", "John the Ripper", "Ettercap", "Aircrack-ng", 
+  "Nessus", "Acunetix", "Splunk", "Malware Reverse Engineering", "Cryptography",
 ] as const;
