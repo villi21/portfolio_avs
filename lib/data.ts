@@ -19,7 +19,7 @@ export const links = [
 
 export const experiencesData = [
   {
-    title: "Cybersecurity Student & Practitioner",
+    title: "Cybersecurity Student",
     location: ["Open to Internships & Collaborative Projects"],
     description: [
       "Applying theoretical knowledge from my cybersecurity degree to practical, hands-on projects.",
@@ -32,14 +32,13 @@ export const experiencesData = [
 
 export const educationData = [
   {
-    title: "Bachelor Of Science In Cybersecurity",
+    title: "Bachelor Degree In Cybersecurity",
     // 👇 CAMBIO: Separado en dos líneas para que coincida con la plantilla original 👇
     location: [
       "ENTI - Universitat de Barcelona, Catalonia, Spain"
     ],
     description: [
-      "GPA: N/A (in course)",
-      "Relevant Coursework: Ethical Hacking & Auditing, Computer Forensics & Malware Analysis, Secure Systems & Networks, Security Governance & Compliance",
+      "Ethical Hacking & Auditing, Computer Forensics & Malware Analysis, Secure Systems & Networks, Security Governance & Compliance",
     ],
     icon: React.createElement(LuGraduationCap),
     date: "2025 - Currently",

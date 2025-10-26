@@ -56,17 +56,10 @@ export default function Education() {
               
               {/* Muestra la descripción */}
               <ul className="!mt-2 !font-normal text-gray-700 dark:text-white/75 list-disc pl-5 space-y-1">
-                {item.description.map((point, idx) => {
-                  const parts = point.split(":");
-                  if (parts.length > 1 && (parts[0] === "GPA" || parts[0] === "Relevant Coursework")) {
-                    return (
-                      <li key={idx}>
-                        <strong>{parts[0]}:</strong>{parts.slice(1).join(":")}
-                      </li>
-                    );
-                  }
-                  return <li key={idx}>{point}</li>;
-                })}
+                {item.description.map((point, idx) => (
+                  // Simplemente renderiza cada punto como un elemento de lista estándar
+                  <li key={idx}>{point}</li>
+                ))}
               </ul>
             </VerticalTimelineElement>
           </React.Fragment>
