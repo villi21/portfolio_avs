@@ -53,7 +53,6 @@ export default function Education() {
               <h3 className="font-semibold capitalize text-gray-900 dark:text-white/90">{item.title}</h3>
               {/* Muestra la ubicación (ahora funciona porque 'location' tiene 2 strings) */}
               <p className="!mt-0 !font-normal text-gray-800 dark:text-gray-400">{item.location[0]}</p>
-              <p className="!mt-0 !font-normal text-gray-800 dark:text-gray-400">{item.location[1]}</p>
               
               {/* Muestra la descripción */}
               <ul className="!mt-2 !font-normal text-gray-700 dark:text-white/75 list-disc pl-5 space-y-1">

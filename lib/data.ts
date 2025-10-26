@@ -35,8 +35,7 @@ export const educationData = [
     title: "Bachelor Of Science In Cybersecurity",
     // 👇 CAMBIO: Separado en dos líneas para que coincida con la plantilla original 👇
     location: [
-      "ENTI - Universitat de Barcelona,",
-      "Catalonia, Spain"
+      "ENTI - Universitat de Barcelona, Catalonia, Spain"
     ],
     description: [
       "GPA: N/A (in course)",
@@ -46,11 +45,10 @@ export const educationData = [
     date: "2025 - Currently",
   },
   {
-    title: "High School Diploma, Science & Technology Specialisation",
+    title: "HS Diploma, Science & Technology Specialisation",
     // 👇 CAMBIO: Separado en dos líneas para que coincida con la plantilla original 👇
     location: [
-      "Institut Joaquim Rubió I Ors,",
-      "Catalonia, Spain"
+      "Institut Joaquim Rubió I Ors, Catalonia, Spain"
     ],
     description: [
       "Fundamentals of Programming",

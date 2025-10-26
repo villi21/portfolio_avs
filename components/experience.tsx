@@ -6,10 +6,11 @@ import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
-import { experiencesData } from "@/lib/data";
+import { experiencesData } from "@/lib/data"; // Mantenemos experiencesData
 import { useSectionInView } from "@/lib/hooks";
 import { useTheme } from "@/context/theme-context";
 
+// Usamos el tipo TimelineItem importado (implícitamente a través de experiencesData)
 export default function Experience() {
   const { ref } = useSectionInView("Experience");
   const { theme } = useTheme();
@@ -18,6 +19,7 @@ export default function Experience() {
     <section id="experience" ref={ref} className="scroll-mt-28 mb-28 sm:mb-40">
       <SectionHeading>My experience</SectionHeading>
       <VerticalTimeline lineColor="">
+        {/* Mapeamos sobre experiencesData */}
         {experiencesData.map((item, index) => (
           <React.Fragment key={index}>
             <VerticalTimelineElement
@@ -44,10 +46,14 @@ export default function Experience() {
                 fontSize: "1.5rem",
               }}
             >
-              <h3 className="font-semibold capitalize">{item.title}</h3>
+              {/* --- ESTRUCTURA DE RENDERIZADO SIMILAR A EDUCATION --- */}
+              <h3 className="font-semibold capitalize text-gray-900 dark:text-white/90">{item.title}</h3>
+              {/* Mapeamos sobre el array de location */}
               {item.location.map((loc, i) => (
-                <p key={i} className="font-normal !mt-0">{loc}</p>
+                 <p key={i} className="!mt-0 !font-normal text-gray-800 dark:text-gray-400">{loc}</p>
               ))}
+
+              {/* Mapeamos sobre el array de description */}
               <ul className="list-disc pl-5 mt-2 space-y-1">
                 {item.description.map((point, i) => (
                   <li key={i} className="!mt-1 !font-normal text-gray-700 dark:text-white/75">
