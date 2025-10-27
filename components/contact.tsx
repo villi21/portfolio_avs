@@ -1,6 +1,5 @@
 'use client';
 
-// 👇 CAMBIO: Importar useState
 import React, { useRef, useState } from 'react';
 import SectionHeading from './section-heading';
 import { motion } from 'framer-motion';
@@ -12,21 +11,18 @@ import toast from 'react-hot-toast';
 export default function Contact() {
   const { ref } = useSectionInView('Contact');
   const formRef = useRef<HTMLFormElement>(null);
-  // 👇 CAMBIO: Añadimos estado de carga
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    // 👇 CAMBIO: Bloquear si ya se está enviando
     if (isSubmitting) return;
-    
-    // 👇 CAMBIO: Iniciar estado de carga
+
     setIsSubmitting(true);
 
     if (!window.grecaptcha) {
       toast.error('reCAPTCHA no está cargado. Por favor, espera un momento.');
-      setIsSubmitting(false); // Detener carga si hay error
+      setIsSubmitting(false);
       return;
     }
 
@@ -36,7 +32,7 @@ export default function Contact() {
     );
 
     if (!formRef.current) {
-        setIsSubmitting(false); // Detener carga si hay error
+        setIsSubmitting(false); 
         return;
     }
     const formData = new FormData(formRef.current);
@@ -46,14 +42,13 @@ export default function Contact() {
 
     if (error) {
       toast.error(error);
-      setIsSubmitting(false); // Detener carga si hay error
+      setIsSubmitting(false);
       return;
     }
 
     toast.success('¡Email enviado con éxito!');
     formRef.current.reset();
-    
-    // 👇 CAMBIO: Detener estado de carga
+
     setIsSubmitting(false);
   };
 
@@ -97,7 +92,6 @@ export default function Contact() {
           required
           maxLength={5000}
         />
-        {/* 👇 CAMBIO: Pasamos el estado de carga al botón */}
         <SubmitBtn pending={isSubmitting} />
       </form>
     </motion.section>

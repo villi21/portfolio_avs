@@ -8,7 +8,6 @@ type ThemeContextProviderProps = {
   children: ReactNode;
 };
 
-// 👇 CAMBIO: Eliminado toggleTheme del tipo
 type ThemeContextType = {
   theme: Theme;
 };
@@ -18,10 +17,9 @@ const ThemeContext = createContext<ThemeContextType | null>(null);
 export default function ThemeContextProvider({
   children,
 }: ThemeContextProviderProps) {
-  // 👇 CAMBIO: El estado se fija en "dark" y no hay función para cambiarlo
+
   const theme: Theme = "dark";
 
-  // 👇 CAMBIO: useEffect ahora solo añade la clase "dark" por si acaso
   useEffect(() => {
     document.documentElement.classList.add("dark");
   }, []);
@@ -30,7 +28,7 @@ export default function ThemeContextProvider({
     <ThemeContext.Provider
       value={{
         theme,
-        // 👇 CAMBIO: toggleTheme ya no se proporciona
+
       }}
     >
       {children}

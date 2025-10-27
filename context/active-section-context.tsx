@@ -20,7 +20,7 @@ export const ActiveSectionContext =
 export default function ActiveSectionContextProvider({
   children,
 }: ActiveSectionContextProviderProps) {
-  // CAMBIO CLAVE: El estado inicial debe ser "Home", no "About".
+
   const [activeSection, setActiveSection] = useState<SectionName>('Home');
   const [timeOfLastClick, setTimeOfLastClick] = useState(0); 
 

@@ -47,10 +47,10 @@ export default function Project({
                 {tag}
               </li>
             ))}
-            {gitLink && gitLink[0] && ( // Check if gitLink[0] has a value
+            {gitLink && gitLink[0] && ( 
               <li>
                 <a href={gitLink[0]} target="_blank" rel="noopener noreferrer">
-                  <FaGithubSquare size={24} className="text-white-600" /> {/* text-gray-700 dark:text-white/70 */}
+                  <FaGithubSquare size={24} className="text-white-600" /> 
                 </a>
               </li>
             )}
@@ -60,7 +60,7 @@ export default function Project({
         <Image
           src={imageUrl}
           alt="Project I worked on"
-          quality={100} // Aumentado a 100
+          quality={100}
           className="
             absolute hidden sm:block top-10 -right-16 w-[26rem] rounded-lg shadow-2xl
 

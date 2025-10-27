@@ -33,7 +33,6 @@ export const experiencesData = [
 export const educationData = [
   {
     title: "Bachelor Degree In Cybersecurity",
-    // 👇 CAMBIO: Separado en dos líneas para que coincida con la plantilla original 👇
     location: [
       "ENTI - Universitat de Barcelona, Catalonia, Spain"
     ],
@@ -48,7 +47,6 @@ export const educationData = [
   },
   {
     title: "HS Diploma, Science & Technology Specialisation",
-    // 👇 CAMBIO: Separado en dos líneas para que coincida con la plantilla original 👇
     location: [
       "Institut Joaquim Rubió I Ors, Catalonia, Spain"
     ],

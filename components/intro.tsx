@@ -6,14 +6,12 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { BsLinkedin } from 'react-icons/bs';
 import { FaGithubSquare } from 'react-icons/fa';
-import { useSectionInView } from "@/lib/hooks"; // Importamos el hook
+import { useSectionInView } from "@/lib/hooks"; 
 
 const Intro = () => {
-  // 👇 CAMBIO: Llamamos al hook para la sección "Home" con un threshold más alto
-  const { ref } = useSectionInView("Home", 0.75); // Usamos 0.75 en lugar del 0.5 por defecto
+  const { ref } = useSectionInView("Home", 0.75); 
 
   return (
-    // 👇 CAMBIO: Añadimos la ref a la sección
     <section
       ref={ref}
       id="home"
@@ -21,7 +19,6 @@ const Intro = () => {
     >
       <div className="flex flex-col lg:flex-row items-center justify-center gap-10">
 
-        {/* --- FOTO --- */}
         <motion.div
           className="relative"
           initial={{ opacity: 0, x: -100 }}
@@ -38,7 +35,6 @@ const Intro = () => {
           />
         </motion.div>
 
-        {/* --- TEXTO Y BOTONES --- */}
         <motion.div
           className="flex flex-col items-center lg:items-start gap-4"
           initial={{ opacity: 0, x: 100 }}
