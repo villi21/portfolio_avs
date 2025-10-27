@@ -1,7 +1,7 @@
 import React from "react";
 import { CgWorkAlt } from "react-icons/cg";
 import { LuGraduationCap } from "react-icons/lu";
-import srs from "@/public/srs.png";
+import comingsoon from "@/public/comingsoon.png";
 import android from "@/public/android.jpeg";
 import mypass from "@/public/mypass.jpeg";
 import colordetector from "@/public/colordetector.jpeg";
@@ -38,10 +38,10 @@ export const educationData = [
       "ENTI - Universitat de Barcelona, Catalonia, Spain"
     ],
     description: [
-      "Fundamentals of Programming",
-      "Principles of Electronics",
-      "Industrial Technology",
-      "Advanced Mathematics & Physics"
+      "Ethical Hacking & Auditing",
+      "Computer Forensics & Malware Analysis",
+      "Secure Systems & Networks",
+      "Security Governance & Compliance"
     ],
     icon: React.createElement(LuGraduationCap),
     date: "2025 - Currently",
@@ -65,13 +65,13 @@ export const educationData = [
 
 export const projectsData = [
    {
-    title: "Security Recon Suite",
+    title: "Working on my first projects...",
     description:
-      "A comprehensive tool for identifying vulnerabilities and gathering critical security information to enhance system protection.",
-    tags: ["Python", "Socket", "Subprocess"],
-    imageUrl:srs,
+      "I am currently working on several personal projects related to cybersecurity, including vulnerability analysis tools and security simulations. They will be showcased here soon!",
+    tags: ["Python", "Cryptography", "Socket"],
+    imageUrl:comingsoon,
     gitLink: [""],
-  },
+  }/*,
   {
     title: "Android Music Store",
     description:
@@ -95,7 +95,7 @@ export const projectsData = [
     tags: ["Kotlin", "Retrofit", "Android Application"],
     imageUrl: colordetector,
     gitLink: [""],
-  },
+  },*/
 ] as const;
 
 export const certificatesData = [

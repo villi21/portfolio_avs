@@ -69,7 +69,7 @@ export default function Contact() {
       {/* Usamos onSubmit para llamar a nuestra función handleSubmit */}
       <form
         ref={formRef} // Asignamos la referencia al formulario
-        className="mt-10 flex flex-col dark:text-black"
+        className="mt-5 flex flex-col dark:text-black"
         onSubmit={handleSubmit}
       >
         <input
