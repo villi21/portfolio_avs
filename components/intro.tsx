@@ -6,16 +6,21 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { BsLinkedin } from 'react-icons/bs';
 import { FaGithubSquare } from 'react-icons/fa';
+import { useSectionInView } from "@/lib/hooks"; // Importamos el hook
 
 const Intro = () => {
+  // 👇 CAMBIO: Llamamos al hook para la sección "Home" con un threshold más alto
+  const { ref } = useSectionInView("Home", 0.75); // Usamos 0.75 en lugar del 0.5 por defecto
+
   return (
+    // 👇 CAMBIO: Añadimos la ref a la sección
     <section
+      ref={ref}
       id="home"
-      // 👇 CAMBIO: AÑADIMOS h-screen PARA QUE OCUPE TODA LA PANTALLA 👇
       className="h-screen max-w-5xl mx-auto scroll-mt-28 flex flex-col justify-center"
     >
       <div className="flex flex-col lg:flex-row items-center justify-center gap-10">
-        
+
         {/* --- FOTO --- */}
         <motion.div
           className="relative"
@@ -43,7 +48,7 @@ const Intro = () => {
             <h1 className="text-6xl font-bold text-white">Alex Villegas</h1>
             <p className="text-4xl font-bold text-gray-400/70 mt-2">Cybersecurity Student</p>
           </div>
-          
+
           <div className="grid grid-cols-[1fr_auto] grid-rows-2 gap-x-4 gap-y-4 w-full max-w-sm">
             <a
               href="/CV_AVS.pdf"
@@ -61,7 +66,7 @@ const Intro = () => {
             >
               <BsLinkedin size={28} />
             </a>
-            
+
             <Link
               href="#contact"
               className="bg-white/10 font-semibold text-white px-8 py-5 flex items-center justify-center rounded-full outline-none focus:scale-105 hover:scale-105 hover:bg-white/20 active:scale-100 transition shadow-md"

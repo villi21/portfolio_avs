@@ -1,16 +1,17 @@
 "use client";
 
-import React, { useEffect, useState, createContext, useContext } from "react";
+import React, { useEffect, useState, createContext, useContext, ReactNode } from "react";
 
+// El tipo Theme sigue existiendo, pero solo usaremos 'dark'
 type Theme = "light" | "dark";
 
 type ThemeContextProviderProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
+// Modificamos el tipo del contexto: toggleTheme ya no es necesario
 type ThemeContextType = {
   theme: Theme;
-  toggleTheme: () => void;
 };
 
 const ThemeContext = createContext<ThemeContextType | null>(null);
@@ -18,40 +19,27 @@ const ThemeContext = createContext<ThemeContextType | null>(null);
 export default function ThemeContextProvider({
   children,
 }: ThemeContextProviderProps) {
-  const [theme, setTheme] = useState<Theme>("light");
+  // 👇 CAMBIO: Forzamos el estado inicial y único a 'dark'
+  const [theme, setTheme] = useState<Theme>("dark");
 
+  // 👇 CAMBIO: La función toggleTheme ahora no hace nada o se puede eliminar
   const toggleTheme = () => {
-    if (theme === "light") {
-      setTheme("dark");
-      window.localStorage.setItem("theme", "dark");
-      document.documentElement.classList.add("dark");
-    } else {
-      setTheme("light");
-      window.localStorage.setItem("theme", "light");
-      document.documentElement.classList.remove("dark");
-    }
+    // Esta función ya no se usará ni se exportará en el contexto
+    console.log("Theme switching is disabled.");
   };
 
+  // 👇 CAMBIO: Simplificamos useEffect para añadir siempre la clase 'dark'
   useEffect(() => {
-    const localTheme = window.localStorage.getItem("theme") as Theme | null;
-
-    if (localTheme) {
-      setTheme(localTheme);
-
-      if (localTheme === "dark") {
-        document.documentElement.classList.add("dark");
-      }
-    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      setTheme("dark");
-      document.documentElement.classList.add("dark");
-    }
-  }, []);
+    document.documentElement.classList.add("dark");
+    // Opcional: Asegurarse de que 'light' no esté presente
+    document.documentElement.classList.remove("light");
+  }, []); // Se ejecuta solo una vez al montar
 
   return (
     <ThemeContext.Provider
       value={{
         theme,
-        toggleTheme,
+        // No pasamos toggleTheme
       }}
     >
       {children}
@@ -59,6 +47,7 @@ export default function ThemeContextProvider({
   );
 }
 
+// El hook useTheme sigue igual, pero solo devolverá 'dark'
 export function useTheme() {
   const context = useContext(ThemeContext);
 
