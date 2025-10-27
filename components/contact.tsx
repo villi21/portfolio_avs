@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useRef } from 'react'; // Importamos useRef
+// 👇 CAMBIO: Importar useState
+import React, { useRef, useState } from 'react';
 import SectionHeading from './section-heading';
 import { motion } from 'framer-motion';
 import { useSectionInView } from '@/lib/hooks';
@@ -10,40 +11,50 @@ import toast from 'react-hot-toast';
 
 export default function Contact() {
   const { ref } = useSectionInView('Contact');
-  // 1. Creamos una referencia específica para el formulario
   const formRef = useRef<HTMLFormElement>(null);
+  // 👇 CAMBIO: Añadimos estado de carga
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault(); // Prevenimos el comportamiento por defecto del formulario
+    event.preventDefault();
 
-    // 2. reCAPTCHA debe estar cargado
+    // 👇 CAMBIO: Bloquear si ya se está enviando
+    if (isSubmitting) return;
+    
+    // 👇 CAMBIO: Iniciar estado de carga
+    setIsSubmitting(true);
+
     if (!window.grecaptcha) {
       toast.error('reCAPTCHA no está cargado. Por favor, espera un momento.');
+      setIsSubmitting(false); // Detener carga si hay error
       return;
     }
 
-    // 3. Ejecutar reCAPTCHA v3 para obtener el token
     const token = await window.grecaptcha.execute(
       process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? '',
       { action: 'submit' }
     );
 
-    // 4. Recolectar los datos del formulario usando la referencia
-    if (!formRef.current) return;
+    if (!formRef.current) {
+        setIsSubmitting(false); // Detener carga si hay error
+        return;
+    }
     const formData = new FormData(formRef.current);
-    formData.append('token', token); // Añadimos el token a los datos
+    formData.append('token', token);
 
-    // 5. Llamar a la server action para enviar el email
     const { error } = await sendEmail(formData);
 
-    // 6. Mostrar el resultado
     if (error) {
       toast.error(error);
+      setIsSubmitting(false); // Detener carga si hay error
       return;
     }
 
     toast.success('¡Email enviado con éxito!');
-    formRef.current.reset(); // Limpiamos el formulario
+    formRef.current.reset();
+    
+    // 👇 CAMBIO: Detener estado de carga
+    setIsSubmitting(false);
   };
 
   return (
@@ -66,9 +77,8 @@ export default function Contact() {
         or via the form below.
       </p>
 
-      {/* Usamos onSubmit para llamar a nuestra función handleSubmit */}
       <form
-        ref={formRef} // Asignamos la referencia al formulario
+        ref={formRef}
         className="mt-5 flex flex-col dark:text-black"
         onSubmit={handleSubmit}
       >
@@ -87,7 +97,8 @@ export default function Contact() {
           required
           maxLength={5000}
         />
-        <SubmitBtn />
+        {/* 👇 CAMBIO: Pasamos el estado de carga al botón */}
+        <SubmitBtn pending={isSubmitting} />
       </form>
     </motion.section>
   );
