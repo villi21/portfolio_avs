@@ -15,21 +15,20 @@ export const sendEmail = async (formData: FormData) => {
   const message = formData.get("message");
   const token = formData.get("token");
 
-  // --- 1. Validación de Entradas ---
+  // --- Validación (sin cambios) ---
   if (!validateString(senderEmail, 500)) {
     return { error: "Invalid sender email" };
   }
   if (!validateString(message, 5000)) {
     return { error: "Invalid message" };
   }
-  
-  // --- 2. Verificación de reCAPTCHA ---
+
+  // --- Verificación reCAPTCHA (sin cambios) ---
   console.log("Verifying reCAPTCHA...");
   if (!recaptchaSecretKey || !token) {
     console.error("reCAPTCHA secret key or token is missing.");
     return { error: "reCAPTCHA configuration error." };
   }
-
   try {
     const recaptchaRes = await fetch("https://www.google.com/recaptcha/api/siteverify", {
       method: "POST",
@@ -37,26 +36,25 @@ export const sendEmail = async (formData: FormData) => {
       body: `secret=${recaptchaSecretKey}&response=${token}`,
     });
     const recaptchaData = await recaptchaRes.json();
-
     if (!recaptchaData.success || recaptchaData.score < 0.5) {
       console.warn("reCAPTCHA verification failed:", recaptchaData);
       return { error: "reCAPTCHA verification failed. Possible bot activity." };
     }
-    
     console.log("reCAPTCHA verification successful! Score:", recaptchaData.score);
   } catch (error) {
     console.error("Error connecting to reCAPTCHA verification service:", error);
     return { error: "Could not verify reCAPTCHA. Please try again." };
   }
 
-  // --- 3. Envío del Email con Resend ---
+  // --- Envío del Email ---
   console.log("Proceeding to send email with Resend...");
   try {
     const data = await resend.emails.send({
       from: "Contact Form <onboarding@resend.dev>",
-      to: "alexvillegassalguero@gmail.com", // Tu email de cuenta de Resend
+      to: "alexvillegassalguero@gmail.com",
       subject: "Message from your Portfolio",
-      reply_to: senderEmail.toString(),
+      // 👇 CORRECCIÓN: Cambiado reply_to a replyTo
+      replyTo: senderEmail.toString(),
       react: React.createElement(ContactFormEmail, {
         message: message.toString(),
         senderEmail: senderEmail.toString(),
@@ -64,7 +62,7 @@ export const sendEmail = async (formData: FormData) => {
     });
 
     console.log("Email sent successfully with Resend:", data);
-    return { data }; // Devuelve éxito
+    return { data };
 
   } catch (error: unknown) {
     console.error("Error sending email with Resend:", error);

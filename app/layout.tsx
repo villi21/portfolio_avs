@@ -5,7 +5,7 @@ import ActiveSectionContextProvider from "@/context/active-section-context";
 import Footer from "@/components/footer";
 import ThemeContextProvider from "@/context/theme-context";
 import { Toaster } from "react-hot-toast";
-import Script from 'next/script'; // ¡Asegúrate de que esta importación esté presente!
+import Script from 'next/script'; // Import Script
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,10 +20,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    // Asegúrate de que 'dark' esté aquí si quieres modo oscuro por defecto
-    <html lang="en" className="!scroll-smooth dark">
+    <html lang="en" className="!scroll-smooth dark"> {/* Modo oscuro por defecto */}
       <head>
-        {/* La etiqueta <script> original DEBE SER ELIMINADA de aquí */}
+        {/* Script original eliminado */}
       </head>
       <body
         className={`${inter.className} bg-gray-50 text-gray-950 relative dark:bg-gray-900 dark:text-gray-50 dark:text-opacity-90`}
@@ -38,14 +37,14 @@ export default function RootLayout({
             {children}
             <Footer />
             <Toaster position="top-right" />
-            {/* ThemeSwitch fue eliminado */}
+            {/* ThemeSwitch eliminado */}
           </ActiveSectionContextProvider>
         </ThemeContextProvider>
 
-        {/* 👇 El componente Script debe estar aquí, antes de cerrar </body> */}
+        {/* 👇 CAMBIO: Cambiada la estrategia a lazyOnload */}
         <Script
           src="https://www.google.com/recaptcha/api.js?render=6LfTDPErAAAAAKABhQf_hN1NrRNjSD0Ey-DgDXa2"
-          strategy="beforeInteractive"
+          strategy="lazyOnload" // Cambiado de beforeInteractive
         />
       </body>
     </html>
