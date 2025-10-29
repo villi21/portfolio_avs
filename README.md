@@ -17,4 +17,4 @@ Portfolio built by using latest technologies to showcase my skill set.
 - Fresh, modern UI design
 - Light & Dark mode
 - Responsive website
-
+    
